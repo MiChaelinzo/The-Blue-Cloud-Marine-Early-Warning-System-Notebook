@@ -1,0 +1,52 @@
+# Blue-Cloud Marine Analysis - Python Requirements
+# Install with: pip install -r python-requirements.txt
+
+# Core scientific computing
+numpy>=1.21.0
+pandas>=1.3.0
+scipy>=1.7.0
+
+# Oceanographic calculations
+gsw>=3.4.0              # Gibbs SeaWater oceanographic toolbox
+seawater>=3.3.4         # Alternative seawater calculations
+
+# Geospatial analysis
+geopy>=2.2.0            # Distance calculations
+cartopy>=0.20.0         # Geospatial plotting
+pyproj>=3.2.0           # Coordinate transformations
+
+# Data visualization
+matplotlib>=3.4.0
+seaborn>=0.11.0
+plotly>=5.0.0           # Interactive plots
+bokeh>=2.4.0            # Interactive visualizations
+
+# Jupyter notebook support
+jupyter>=1.0.0
+ipywidgets>=7.6.0       # Interactive widgets
+jupyterlab>=3.0.0       # Modern Jupyter interface
+
+# Marine data access
+xarray>=0.19.0          # N-dimensional arrays (NetCDF support)
+netcdf4>=1.5.7          # NetCDF file support
+h5py>=3.3.0             # HDF5 file support
+
+# Web scraping and APIs (for data access)
+requests>=2.26.0
+beautifulsoup4>=4.10.0
+aiohttp>=3.7.0          # Async HTTP client
+
+# Statistical analysis
+scikit-learn>=1.0.0     # Machine learning
+statsmodels>=0.12.0     # Statistical modeling
+
+# Time series analysis
+pandas>=1.3.0           # Already included above
+datetime                # Built-in Python module
+
+# Optional: Advanced marine analysis
+# Uncomment if needed:
+# cmocean>=2.0            # Oceanographic colormaps
+# windrose>=1.6.8         # Wind rose plots
+# metpy>=1.1.0            # Meteorological analysis
+# pycurrents>=0.6.0       # Ocean current analysis
