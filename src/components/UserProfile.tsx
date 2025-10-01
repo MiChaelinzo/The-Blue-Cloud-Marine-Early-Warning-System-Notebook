@@ -37,7 +37,7 @@ const UserProfile: React.FC = () => {
       </button>
 
       {showDropdown && (
-        <div className="absolute right-0 top-full mt-2 w-64 bg-white/10 backdrop-blur-lg rounded-xl border border-white/20 shadow-xl z-50">
+        <div className="absolute right-0 top-full mt-2 w-64 bg-slate-800/95 backdrop-blur-lg rounded-xl border border-white/30 shadow-2xl z-50">
           <div className="p-4 border-b border-white/10">
             <div className="flex items-center space-x-3 mb-3">
               <div className="w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center">

@@ -1,7 +1,10 @@
 import React from 'react';
 import { Anchor, Bug, Thermometer, Waves } from 'lucide-react';
+import { useAquacultureData } from '../hooks/useBlueCloudData';
 
 const AquacultureMonitor: React.FC = () => {
+  const { data: farmData, loading: farmLoading } = useAquacultureData('Mediterranean');
+
   const farms = [
     {
       name: 'Atlantic Salmon Farm Alpha',
@@ -124,7 +127,10 @@ const AquacultureMonitor: React.FC = () => {
                   <span className={`px-3 py-1 rounded-full text-sm font-medium ${getStatusColor(farm.status)}`}>
                     {farm.status}
                   </span>
-                  <p className="text-blue-200 text-xs mt-2">Last check: {farm.lastInspection}</p>
+                  <p className="text-blue-200 text-xs mt-2 cursor-pointer hover:text-blue-100" 
+                     onClick={() => alert(`Inspection details for ${farm.name}:\n\nLast inspection: ${farm.lastInspection}\nInspector: Marine Biologist Team\nStatus: ${farm.status}\nNext scheduled: ${farm.name.includes('Alpha') ? '1 day' : farm.name.includes('Tuna') ? '5 days' : '3 days'}`)}>
+                    Last check: {farm.lastInspection}
+                  </p>
                 </div>
               </div>
               

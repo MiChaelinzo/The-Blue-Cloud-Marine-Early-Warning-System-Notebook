@@ -93,7 +93,7 @@ const Dashboard: React.FC = () => {
             { time: '11:22', event: 'Invasive species detected in coastal monitoring zone', severity: 'medium' },
             { time: '10:15', event: 'Glider data indicates unusual circulation patterns', severity: 'low' },
           ].map((activity, index) => (
-            <div key={index} className="flex items-center justify-between py-3 border-b border-white/10 last:border-b-0">
+            <div key={index} className="flex items-center justify-between py-3 border-b border-white/10 last:border-b-0 hover:bg-white/5 rounded-lg px-2 transition-colors duration-200 cursor-pointer">
               <div className="flex items-center space-x-3">
                 <div className={`h-2 w-2 rounded-full ${
                   activity.severity === 'high' ? 'bg-red-400' :

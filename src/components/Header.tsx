@@ -1,5 +1,5 @@
 import React from 'react';
-import { Waves, Shield, Fish, Droplets, Anchor, CloudRain, BookOpen } from 'lucide-react';
+import { Waves, Shield, Fish, Droplets, Anchor, CloudRain } from 'lucide-react';
 import UserProfile from './UserProfile';
 
 interface HeaderProps {
@@ -14,7 +14,6 @@ const Header: React.FC<HeaderProps> = ({ activeTab, setActiveTab }) => {
     { id: 'oil-spill', label: 'Oil Spill Monitor', icon: Droplets },
     { id: 'aquaculture', label: 'Aquaculture', icon: Anchor },
     { id: 'weather', label: 'Weather Alerts', icon: CloudRain },
-    { id: 'notebook', label: 'Notebook', icon: BookOpen },
   ];
 
   return (

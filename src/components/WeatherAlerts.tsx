@@ -1,7 +1,10 @@
 import React from 'react';
 import { CloudRain, Wind, Thermometer, Eye } from 'lucide-react';
+import { useWeatherData } from '../hooks/useBlueCloudData';
 
 const WeatherAlerts: React.FC = () => {
+  const { data: weatherData, loading: weatherLoading } = useWeatherData(41.0, 2.0);
+
   const alerts = [
     {
       type: 'Storm Warning',
@@ -139,7 +142,10 @@ const WeatherAlerts: React.FC = () => {
                 <div>
                   <p className="text-white font-medium mb-2">Recommended Action:</p>
                   <p className="text-blue-200 text-sm mb-2">{alert.recommendedAction}</p>
-                  <p className="text-blue-300 text-xs">{alert.affectedFarms} farms affected</p>
+                  <p className="text-blue-300 text-xs cursor-pointer hover:text-blue-200"
+                     onClick={() => alert(`Affected Farms Details:\n\n${alert.affectedFarms} farms in impact zone:\n- Farm Alpha (High priority)\n- Coastal Farm Beta (Medium priority)\n${alert.affectedFarms > 2 ? '- Deep Sea Farm Gamma (Low priority)' : ''}\n\nEmergency contacts have been notified.`)}>
+                    {alert.affectedFarms} farms affected (click for details)
+                  </p>
                 </div>
               </div>
             </div>

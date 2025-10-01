@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { AlertTriangle, Clock, CheckCircle } from 'lucide-react';
 
 const AlertsPanel: React.FC = () => {
+  const [selectedAlert, setSelectedAlert] = useState<number | null>(null);
+
   const alerts = [
     {
       id: 1,
@@ -95,10 +97,52 @@ const AlertsPanel: React.FC = () => {
             <p className="text-blue-100 text-sm mb-2">{alert.message}</p>
             <div className="flex items-center justify-between">
               <span className="text-blue-300 text-xs">{alert.time}</span>
-              <button className="text-blue-400 hover:text-blue-300 text-xs underline">
-                View Details
+              <button 
+                className="text-blue-400 hover:text-blue-300 text-xs underline"
+                onClick={() => setSelectedAlert(selectedAlert === alert.id ? null : alert.id)}
+              >
+                {selectedAlert === alert.id ? 'Hide Details' : 'View Details'}
               </button>
             </div>
+            
+            {selectedAlert === alert.id && (
+              <div className="mt-3 pt-3 border-t border-white/10">
+                <div className="space-y-2">
+                  <div className="flex justify-between">
+                    <span className="text-blue-300 text-xs">Alert ID:</span>
+                    <span className="text-white text-xs">#{alert.id.toString().padStart(4, '0')}</span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-blue-300 text-xs">Severity:</span>
+                    <span className={`text-xs ${
+                      alert.type === 'critical' ? 'text-red-400' :
+                      alert.type === 'warning' ? 'text-orange-400' :
+                      alert.type === 'resolved' ? 'text-green-400' :
+                      'text-blue-400'
+                    }`}>
+                      {alert.type.charAt(0).toUpperCase() + alert.type.slice(1)}
+                    </span>
+                  </div>
+                  <div className="flex justify-between">
+                    <span className="text-blue-300 text-xs">Location:</span>
+                    <span className="text-white text-xs">
+                      {alert.type === 'critical' ? '41.234°N, 2.187°E' :
+                       alert.type === 'warning' ? '41.445°N, 2.234°E' :
+                       '41.123°N, 2.098°E'}
+                    </span>
+                  </div>
+                  <div className="mt-2">
+                    <span className="text-blue-300 text-xs">Recommended Action:</span>
+                    <p className="text-white text-xs mt-1">
+                      {alert.type === 'critical' ? 'Deploy containment booms immediately and alert coastal authorities.' :
+                       alert.type === 'warning' ? 'Monitor migration patterns and update fishing quotas accordingly.' :
+                       alert.type === 'resolved' ? 'System maintenance completed successfully. All services operational.' :
+                       'Continue monitoring weather conditions and prepare contingency plans.'}
+                    </p>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         ))}
       </div>

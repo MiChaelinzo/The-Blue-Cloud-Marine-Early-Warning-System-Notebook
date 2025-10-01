@@ -8,8 +8,6 @@ import SpeciesMigration from './components/SpeciesMigration';
 import OilSpillMonitor from './components/OilSpillMonitor';
 import AquacultureMonitor from './components/AquacultureMonitor';
 import WeatherAlerts from './components/WeatherAlerts';
-import { NotebookApp } from './components/notebook/NotebookApp';
-import './components/notebook/notebook.css';
 
 function App() {
   const [activeTab, setActiveTab] = useState('dashboard');
@@ -42,8 +40,6 @@ function App() {
         return <AquacultureMonitor />;
       case 'weather':
         return <WeatherAlerts />;
-      case 'notebook':
-        return <NotebookApp />;
       default:
         return <Dashboard />;
     }
@@ -56,20 +52,14 @@ function App() {
       <Header activeTab={activeTab} setActiveTab={setActiveTab} />
       
       <main className="relative z-10 container mx-auto px-4 py-8">
-        {activeTab === 'notebook' ? (
-          <div className="h-[calc(100vh-8rem)]">
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
+          <div className="lg:col-span-3">
             {renderContent()}
           </div>
-        ) : (
-          <div className="grid grid-cols-1 lg:grid-cols-4 gap-6">
-            <div className="lg:col-span-3">
-              {renderContent()}
-            </div>
-            <div className="lg:col-span-1">
-              <AlertsPanel />
-            </div>
+          <div className="lg:col-span-1">
+            <AlertsPanel />
           </div>
-        )}
+        </div>
       </main>
     </div>
   );
